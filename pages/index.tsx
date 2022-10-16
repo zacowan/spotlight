@@ -1,14 +1,19 @@
 import Head from "next/head";
 import { GetStaticProps } from "next";
-import { getAllPostsForHome } from "../lib/api";
+import { getRecentPosts } from "../lib/api";
 import Image from "next/image";
 import Link from "next/link";
 import smileProfile from "../public/resources/smile_profile.png";
 import React from "react";
+import { RecentPost } from "../lib/types";
+import dayjs from "dayjs";
 
-export default function Index({ allPosts: { edges }, preview }) {
-  const heroPost = edges[0]?.node;
-  const morePosts = edges.slice(1);
+type Props = {
+  recentPosts: RecentPost[];
+};
+
+const Home: React.FC<Props> = ({ recentPosts }) => {
+  console.log(recentPosts);
 
   return (
     <div className="flex justify-center">
@@ -20,7 +25,7 @@ export default function Index({ allPosts: { edges }, preview }) {
           <ul className="flex flex-wrap space-x-8 px-8 py-2 rounded-full shadow border border-slate-200">
             <li className="font-medium hover:underline">
               <Link href="/">
-                <a>About</a>
+                <a>Home</a>
               </Link>
             </li>
             <li className="font-medium hover:underline">
@@ -60,51 +65,35 @@ export default function Index({ allPosts: { edges }, preview }) {
           <section className="max-w-prose w-full space-y-8">
             <h1 className="text-xl font-medium tracking-tight">Recent Posts</h1>
             <div className="flex flex-wrap gap-8">
-              <Link href="/">
-                <a className="rounded-3xl p-8 hover:bg-slate-100 transition-colors max-w-lg space-y-4">
-                  <time className="text-slate-600 text-sm">
-                    October 5th, 2022
-                  </time>
-                  <h2 className="text-lg font-medium tracking-tight">Title</h2>
-                  <p>
-                    I'm an experienced frontend software engineer passionate
-                    about creative problem solving, successful communication,
-                    and the intersection of design and engineering. I will
-                    graduate in December of 2022 and am currently looking for
-                    full-time software opportunities starting in January 2023.
-                  </p>
-                  <span className="text-blue-600 block max-w">Read Post</span>
-                </a>
-              </Link>
-              <Link href="/">
-                <a className="rounded-3xl p-8 hover:bg-slate-100 transition-colors max-w-lg space-y-4">
-                  <time className="text-slate-600 text-sm">
-                    October 5th, 2022
-                  </time>
-                  <h2 className="text-lg font-medium tracking-tight">Title</h2>
-                  <p>
-                    I'm an experienced frontend software engineer passionate
-                    about creative problem solving, successful communication,
-                    and the intersection of design and engineering. I will
-                    graduate in December of 2022 and am currently looking for
-                    full-time software opportunities starting in January 2023.
-                  </p>
-                  <span className="text-blue-600 block max-w">Read Post</span>
-                </a>
-              </Link>
+              {recentPosts.map(({ node: post }) => (
+                <Link key={post.slug} href={`/posts/${post.slug}`}>
+                  <a className="rounded-3xl p-8 hover:bg-slate-100 transition-colors space-y-4 w-full">
+                    <time className="text-slate-600 text-sm">
+                      {dayjs(post.date).format("MMM D, YYYY")}
+                    </time>
+                    <h2 className="text-lg font-medium tracking-tight">
+                      {post.title}
+                    </h2>
+                    <div dangerouslySetInnerHTML={{ __html: post.excerpt }} />
+                    <span className="text-blue-600 block max-w">Read Post</span>
+                  </a>
+                </Link>
+              ))}
             </div>
           </section>
         </main>
       </div>
     </div>
   );
-}
+};
 
-export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-  const allPosts = await getAllPostsForHome(preview);
+export default Home;
+
+export const getStaticProps: GetStaticProps = async () => {
+  const recentPosts = await getRecentPosts();
 
   return {
-    props: { allPosts, preview },
+    props: { recentPosts },
     revalidate: 10,
   };
 };

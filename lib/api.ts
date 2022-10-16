@@ -1,3 +1,5 @@
+import type { RecentPost } from "./types";
+
 const API_URL = process.env.WORDPRESS_API_URL;
 
 async function fetchAPI(query = "", { variables }: Record<string, any> = {}) {
@@ -27,23 +29,6 @@ async function fetchAPI(query = "", { variables }: Record<string, any> = {}) {
   return json.data;
 }
 
-export async function getPreviewPost(id, idType = "DATABASE_ID") {
-  const data = await fetchAPI(
-    `
-    query PreviewPost($id: ID!, $idType: PostIdType!) {
-      post(id: $id, idType: $idType) {
-        databaseId
-        slug
-        status
-      }
-    }`,
-    {
-      variables: { id, idType },
-    }
-  );
-  return data.post;
-}
-
 export async function getAllPostsWithSlug() {
   const data = await fetchAPI(`
     {
@@ -59,11 +44,11 @@ export async function getAllPostsWithSlug() {
   return data?.posts;
 }
 
-export async function getAllPostsForHome(preview) {
+export async function getRecentPosts(number = 3): Promise<RecentPost[]> {
   const data = await fetchAPI(
     `
     query AllPosts {
-      posts(first: 20, where: { orderby: { field: DATE, order: DESC } }) {
+      posts(first: ${number}, where: { orderby: { field: DATE, order: DESC } }) {
         edges {
           node {
             title
@@ -89,16 +74,12 @@ export async function getAllPostsForHome(preview) {
         }
       }
     }
-  `,
-    {
-      variables: {
-        onlyEnabled: !preview,
-        preview,
-      },
-    }
+  `
   );
 
-  return data?.posts;
+  if (!data) return [];
+
+  return data?.posts.edges;
 }
 
 export async function getPostAndMorePosts(slug, preview, previewData) {
