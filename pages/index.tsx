@@ -8,7 +8,7 @@ import smileProfile from "../public/resources/smile_profile.png";
 import { RecentPost } from "../lib/types";
 import Layout from "../components/Layout";
 import Navigation from "../components/Navigation";
-import RecentPostCard from "../components/RecentPostCard";
+import PostCard from "../components/PostCard";
 import MainContainer from "../components/MainContainer";
 
 type Props = {
@@ -16,8 +16,6 @@ type Props = {
 };
 
 const Home: React.FC<Props> = ({ recentPosts }) => {
-  console.log(recentPosts);
-
   return (
     <Layout>
       <Head>
@@ -27,12 +25,12 @@ const Home: React.FC<Props> = ({ recentPosts }) => {
       <MainContainer>
         <section className="max-w-prose w-full pt-20 space-y-8">
           <div className="w-20">
-            <Image className="bg-blue-200 rounded-full" src={smileProfile} />
+            <Image className="bg-indigo-300 rounded-full" src={smileProfile} />
           </div>
           <h1 className="text-4xl font-medium tracking-tight">
             Software Engineer & UX Enthusiast
           </h1>
-          <p>
+          <p className="text-slate-600">
             I'm an experienced frontend software engineer passionate about
             creative problem solving, successful communication, and the
             intersection of design and engineering. I will graduate in December
@@ -41,17 +39,19 @@ const Home: React.FC<Props> = ({ recentPosts }) => {
           </p>
           <a
             href="#"
-            className="bg-blue-600 text-white px-4 py-2 rounded-full block w-max text-sm shadow hover:bg-blue-700 transition-colors"
+            className="bg-indigo-600 text-white px-4 py-2 rounded-full block w-max text-sm shadow hover:bg-indigo-700 transition-all active:scale-95"
           >
             Download Resume
           </a>
         </section>
         <section className="max-w-prose w-full space-y-8">
           <h1 className="text-xl font-medium tracking-tight">Recent Posts</h1>
-          <div className="flex flex-wrap gap-8">
-            {recentPosts.map(({ node: post }) => (
-              <RecentPostCard key={post.slug} {...post} />
-            ))}
+          <div className="border-l border-slate-200">
+            <div className="flex flex-wrap gap-8 ml-4">
+              {recentPosts.map((post) => (
+                <PostCard key={post.node.slug} post={post} showImage={false} />
+              ))}
+            </div>
           </div>
         </section>
       </MainContainer>

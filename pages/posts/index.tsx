@@ -26,8 +26,8 @@ const Posts: React.FC<Props> = ({ recentPosts }) => {
             All Posts
           </h1>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-            {recentPosts.map(({ node: post }) => (
-              <PostCard key={post.slug} {...post} />
+            {recentPosts.map((post) => (
+              <PostCard key={post.node.slug} post={post} />
             ))}
           </div>
         </section>

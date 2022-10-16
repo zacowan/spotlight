@@ -3,29 +3,23 @@ import Link from "next/link";
 import dayjs from "dayjs";
 import Image from "next/image";
 
-import { FeaturedImage } from "../lib/types";
+import { RecentPost } from "../lib/types";
 
 export type Props = {
-  slug: string;
-  date: string;
-  title: string;
-  excerpt: string;
-  featuredImage?: FeaturedImage;
+  post: RecentPost;
+  showImage?: boolean;
 };
 
 const PostCard: React.FC<Props> = ({
-  title,
-  slug,
-  date,
-  excerpt,
-  featuredImage,
+  post: { node: post },
+  showImage = true,
 }) => {
   return (
-    <Link key={slug} href={`/posts/${slug}`}>
-      <a className="rounded-3xl p-8 hover:bg-slate-100 transition-colors space-y-4 w-full group">
-        {featuredImage && (
+    <Link key={post.slug} href={`/posts/${post.slug}`}>
+      <a className="rounded-3xl p-8 hover:bg-slate-100 transition-all space-y-4 w-full active:scale-95">
+        {showImage && post.featuredImage && (
           <Image
-            src={featuredImage.node.sourceUrl}
+            src={post.featuredImage.node.sourceUrl}
             width="100%"
             height="48px"
             layout="responsive"
@@ -33,13 +27,16 @@ const PostCard: React.FC<Props> = ({
           />
         )}
         <time className="text-slate-600 text-sm block">
-          {dayjs(date).format("MMM D, YYYY")}
+          {dayjs(post.date).format("MMM D, YYYY")}
         </time>
-        <h2 className="text-lg font-medium tracking-tight">{title}</h2>
-        <div dangerouslySetInnerHTML={{ __html: excerpt }} />
-        <span className="text-blue-600 block max-w group-hover:underline">
-          Read Post
-        </span>
+        <div className="space-y-1">
+          <h2 className="font-medium tracking-tight">{post.title}</h2>
+          <div
+            className="text-slate-600"
+            dangerouslySetInnerHTML={{ __html: post.excerpt }}
+          />
+        </div>
+        <span className="text-indigo-600 block max-w">Read Post</span>
       </a>
     </Link>
   );
