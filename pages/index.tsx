@@ -1,10 +1,8 @@
 import Head from "next/head";
 import { GetStaticProps } from "next";
-import Image from "next/image";
 import React from "react";
 
 import { getRecentPosts } from "../lib/api";
-import smileProfile from "../public/resources/smile_profile.png";
 import { RecentPost } from "../lib/types";
 import Layout from "../components/Layout";
 import Navigation from "../components/Navigation";
@@ -24,9 +22,6 @@ const Home: React.FC<Props> = ({ recentPosts }) => {
       <Navigation />
       <MainContainer>
         <section className="max-w-prose w-full pt-20 space-y-8">
-          <div className="w-20">
-            <Image className="bg-indigo-300 rounded-full" src={smileProfile} />
-          </div>
           <h1 className="text-4xl font-medium tracking-tight">
             Software Engineer & UX Enthusiast
           </h1>
