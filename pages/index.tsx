@@ -2,15 +2,15 @@ import Head from "next/head";
 import { GetStaticProps } from "next";
 import React from "react";
 
-import { getRecentPosts } from "../lib/api";
-import { RecentPost } from "../lib/types";
+import { getPostsBasic } from "../lib/api";
+import { PostBasic } from "../lib/types";
 import Layout from "../components/Layout";
 import Navigation from "../components/Navigation";
 import PostCard from "../components/PostCard";
 import MainContainer from "../components/MainContainer";
 
 type Props = {
-  recentPosts: RecentPost[];
+  recentPosts: PostBasic[];
 };
 
 const Home: React.FC<Props> = ({ recentPosts }) => {
@@ -57,7 +57,7 @@ const Home: React.FC<Props> = ({ recentPosts }) => {
 export default Home;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const recentPosts = await getRecentPosts();
+  const recentPosts = await getPostsBasic();
 
   return {
     props: { recentPosts },

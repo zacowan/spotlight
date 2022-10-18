@@ -1,4 +1,4 @@
-import type { RecentPost } from "./types";
+import type { PostBasic } from "./types";
 
 const API_URL = process.env.WORDPRESS_API_URL;
 
@@ -44,7 +44,7 @@ export async function getAllPostsWithSlug() {
   return data?.posts;
 }
 
-export async function getRecentPosts(number = 3): Promise<RecentPost[]> {
+export async function getPostsBasic(number = 3): Promise<PostBasic[]> {
   const data = await fetchAPI(
     `
     query AllPosts {

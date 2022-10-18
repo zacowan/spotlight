@@ -3,10 +3,10 @@ import Link from "next/link";
 import dayjs from "dayjs";
 import Image from "next/image";
 
-import { RecentPost } from "../lib/types";
+import { PostBasic } from "../lib/types";
 
 export type Props = {
-  post: RecentPost;
+  post: PostBasic;
   showImage?: boolean;
 };
 

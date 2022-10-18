@@ -26,7 +26,10 @@ export default function Post({ post, posts }) {
       </Head>
       <Navigation />
       <MainContainer>
-        <h1>Post</h1>
+        <article className="prose prose-slate w-full pt-20">
+          <h1>{post.title}</h1>
+          <span dangerouslySetInnerHTML={{ __html: post.content }} />
+        </article>
       </MainContainer>
     </Layout>
   );

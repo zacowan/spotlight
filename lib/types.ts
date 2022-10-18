@@ -4,15 +4,19 @@ export type FeaturedImage = {
   };
 };
 
-export type Post = {
-  node: {
-    title: string;
-    excerpt: string;
-    slug: string;
-    date: string;
-    featuredImage?: FeaturedImage;
-    content: string;
-  };
+export type PostNode = {
+  title: string;
+  excerpt: string;
+  slug: string;
+  date: string;
+  featuredImage?: FeaturedImage;
+  content: string;
 };
 
-export type RecentPost = Omit<Post, "node.content">;
+export type Post = {
+  node: PostNode;
+};
+
+export type PostBasic = {
+  node: Omit<PostNode, "content">;
+};
