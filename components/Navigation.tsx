@@ -11,7 +11,7 @@ type NavLinkProps = {
 
 const NavLink: React.FC<NavLinkProps> = ({ label, href }) => {
   return (
-    <li className="font-medium hover:text-indigo-600 md:active:scale-95 md:transition-transform w-max">
+    <li className="font-medium hover:text-indigo-600 md:active:scale-95 md:transition-transform w-max py-3 px-3 md:py-0 md:px-0">
       <Link href={href}>
         <a>{label}</a>
       </Link>
@@ -49,7 +49,9 @@ const Navigation: React.FC = () => {
 
       <button
         onClick={() => setMenuOpen(true)}
-        className="md:hidden px-8 py-2 rounded-full shadow border border-slate-200 hover:shadow-md transition-shadow"
+        className={`md:hidden px-8 py-2 rounded-full shadow border border-slate-200 hover:shadow-md transition-shadow ${
+          menuOpen ? "hidden" : "visible"
+        }`}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +97,7 @@ const Navigation: React.FC = () => {
               </svg>
             </button>
           </div>
-          <ul className="space-y-4">
+          <ul className="space-y-2">
             <Links />
           </ul>
         </div>

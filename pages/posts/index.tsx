@@ -7,6 +7,7 @@ import PostCard from "../../components/PostCard";
 import Layout from "../../components/Layout";
 import Navigation from "../../components/Navigation";
 import MainContainer from "../../components/MainContainer";
+import Footer from "../../components/Footer";
 import { PostBasic } from "../../lib/types";
 
 type Props = {
@@ -32,6 +33,7 @@ const Posts: React.FC<Props> = ({ posts }) => {
           </div>
         </section>
       </MainContainer>
+      <Footer />
     </Layout>
   );
 };

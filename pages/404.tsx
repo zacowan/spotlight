@@ -4,6 +4,7 @@ import Link from "next/link";
 import Layout from "../components/Layout";
 import Navigation from "../components/Navigation";
 import MainContainer from "../components/MainContainer";
+import Footer from "../components/Footer";
 
 const NotFound404: React.FC = () => {
   return (
@@ -21,6 +22,7 @@ const NotFound404: React.FC = () => {
           </p>
         </section>
       </MainContainer>
+      <Footer />
     </Layout>
   );
 };

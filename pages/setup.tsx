@@ -6,6 +6,7 @@ import SetupBlurbSection from "../components/SetupBlurbSection";
 import Layout from "../components/Layout";
 import Navigation from "../components/Navigation";
 import MainContainer from "../components/MainContainer";
+import Footer from "../components/Footer";
 
 const Setup: React.FC = () => {
   return (
@@ -69,6 +70,7 @@ const Setup: React.FC = () => {
           </SetupBlurbSection>
         </section>
       </MainContainer>
+      <Footer />
     </Layout>
   );
 };

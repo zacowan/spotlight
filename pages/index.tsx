@@ -8,6 +8,7 @@ import Layout from "../components/Layout";
 import Navigation from "../components/Navigation";
 import PostCard from "../components/PostCard";
 import MainContainer from "../components/MainContainer";
+import Footer from "../components/Footer";
 
 type Props = {
   recentPosts: PostBasic[];
@@ -26,11 +27,11 @@ const Home: React.FC<Props> = ({ recentPosts }) => {
             Software Engineer & UX Enthusiast
           </h1>
           <p className="text-slate-600">
-            I'm an experienced frontend software engineer passionate about
-            creative problem solving, successful communication, and the
-            intersection of design and engineering. I will graduate in December
-            of 2022 and am currently looking for full-time software
-            opportunities starting in January 2023.
+            I'm a software engineer with a passion for creating extraordinary
+            user experiences. I love to learn and am constantly trying to
+            sharpen and broaden my skill set. I will graduate in December of
+            2022 and am currently looking for full-time software opportunities
+            starting in January 2023.
           </p>
           <a
             href="#"
@@ -50,6 +51,7 @@ const Home: React.FC<Props> = ({ recentPosts }) => {
           </div>
         </section>
       </MainContainer>
+      <Footer />
     </Layout>
   );
 };

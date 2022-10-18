@@ -6,6 +6,7 @@ import { getAllPostsWithSlug, getPostBySlug } from "../../lib/api";
 import Layout from "../../components/Layout";
 import Navigation from "../../components/Navigation";
 import MainContainer from "../../components/MainContainer";
+import Footer from "../../components/Footer";
 import type { PostNode } from "../../lib/types";
 
 type Props = {
@@ -25,6 +26,7 @@ const Post: React.FC<Props> = ({ post }) => {
           <div dangerouslySetInnerHTML={{ __html: post.content }} />
         </article>
       </MainContainer>
+      <Footer />
     </Layout>
   );
 };

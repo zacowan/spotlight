@@ -16,7 +16,7 @@ const PostCard: React.FC<Props> = ({
 }) => {
   return (
     <Link key={post.slug} href={`/posts/${post.slug}`}>
-      <a className="rounded-3xl p-8 hover:bg-slate-100 transition-all space-y-4 w-full active:scale-95">
+      <a className="rounded-3xl p-8 hover:bg-slate-100 transition-all space-y-4 w-full md:active:scale-95">
         {showImage && post.featuredImage && (
           <Image
             src={post.featuredImage.node.sourceUrl}
