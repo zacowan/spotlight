@@ -11,7 +11,7 @@ const NotFound404: React.FC = () => {
     <Layout>
       <Navigation />
       <MainContainer>
-        <section className="max-w-prose w-full pt-20 space-y-8">
+        <section className="w-full max-w-prose space-y-8 pt-20">
           <h1 className="text-4xl font-medium tracking-tight">404</h1>
           <p>
             There's nothing to see here. Go back{" "}

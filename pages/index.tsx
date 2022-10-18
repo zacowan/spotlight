@@ -22,7 +22,7 @@ const Home: React.FC<Props> = ({ recentPosts }) => {
       </Head>
       <Navigation />
       <MainContainer>
-        <section className="max-w-prose w-full pt-20 space-y-8">
+        <section className="w-full max-w-prose space-y-8 pt-20">
           <h1 className="text-4xl font-medium tracking-tight">
             Software Engineer & UX Enthusiast
           </h1>
@@ -35,15 +35,15 @@ const Home: React.FC<Props> = ({ recentPosts }) => {
           </p>
           <a
             href="#"
-            className="bg-indigo-600 text-white px-4 py-2 rounded-full block w-max text-sm shadow hover:bg-indigo-700 transition-all active:scale-95"
+            className="block w-max rounded-full bg-indigo-600 px-4 py-2 text-sm text-white shadow transition-all hover:bg-indigo-700 active:scale-95"
           >
             Download Resume
           </a>
         </section>
-        <section className="max-w-prose w-full space-y-8">
+        <section className="w-full max-w-prose space-y-8">
           <h1 className="text-xl font-medium tracking-tight">Recent Posts</h1>
           <div className="border-l border-slate-200">
-            <div className="flex flex-wrap gap-8 ml-4">
+            <div className="ml-4 flex flex-wrap gap-8">
               {recentPosts.map((post) => (
                 <PostCard key={post.node.slug} post={post} showImage={false} />
               ))}

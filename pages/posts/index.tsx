@@ -22,8 +22,8 @@ const Posts: React.FC<Props> = ({ posts }) => {
       </Head>
       <Navigation />
       <MainContainer>
-        <section className="w-full pt-20 space-y-8">
-          <h1 className="text-4xl font-medium tracking-tight text-center">
+        <section className="w-full space-y-8 pt-20">
+          <h1 className="text-center text-4xl font-medium tracking-tight">
             All Posts
           </h1>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">

@@ -16,7 +16,7 @@ const Setup: React.FC = () => {
       </Head>
       <Navigation />
       <MainContainer>
-        <section className="max-w-prose w-full pt-20 space-y-8">
+        <section className="w-full max-w-prose space-y-8 pt-20">
           <h1 className="text-4xl font-medium tracking-tight">
             Stuff that makes my life easier. And now, yours.
           </h1>

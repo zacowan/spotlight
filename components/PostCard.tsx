@@ -16,7 +16,7 @@ const PostCard: React.FC<Props> = ({
 }) => {
   return (
     <Link key={post.slug} href={`/posts/${post.slug}`}>
-      <a className="rounded-3xl p-8 hover:bg-slate-100 transition-all space-y-4 w-full md:active:scale-95">
+      <a className="w-full space-y-4 rounded-3xl p-8 transition-all hover:bg-slate-100 md:active:scale-95">
         {showImage && post.featuredImage && (
           <Image
             src={post.featuredImage.node.sourceUrl}
@@ -26,7 +26,7 @@ const PostCard: React.FC<Props> = ({
             className="rounded-2xl"
           />
         )}
-        <time className="text-slate-600 text-sm block">
+        <time className="block text-sm text-slate-600">
           {dayjs(post.date).format("MMM D, YYYY")}
         </time>
         <div className="space-y-1">
@@ -36,7 +36,7 @@ const PostCard: React.FC<Props> = ({
             dangerouslySetInnerHTML={{ __html: post.excerpt }}
           />
         </div>
-        <span className="text-indigo-600 block max-w">Read Post</span>
+        <span className="max-w block text-indigo-600">Read Post</span>
       </a>
     </Link>
   );
