@@ -1,24 +1,18 @@
-import { useRouter } from "next/router";
-import ErrorPage from "next/error";
+import React from "react";
 import Head from "next/head";
 import { GetStaticPaths, GetStaticProps } from "next";
 
-import { getAllPostsWithSlug, getPostAndMorePosts } from "../../lib/api";
-import { CMS_NAME } from "../../lib/constants";
+import { getAllPostsWithSlug, getPostBySlug } from "../../lib/api";
 import Layout from "../../components/Layout";
 import Navigation from "../../components/Navigation";
 import MainContainer from "../../components/MainContainer";
+import type { PostNode } from "../../lib/types";
 
-export default function Post({ post, posts }) {
-  const router = useRouter();
-  const morePosts = posts?.edges;
+type Props = {
+  post: PostNode;
+};
 
-  if (!router.isFallback && !post?.slug) {
-    return <ErrorPage statusCode={404} />;
-  }
-
-  console.log(post);
-
+const Post: React.FC<Props> = ({ post }) => {
   return (
     <Layout>
       <Head>
@@ -28,24 +22,27 @@ export default function Post({ post, posts }) {
       <MainContainer>
         <article className="prose prose-slate w-full pt-20">
           <h1>{post.title}</h1>
-          <span dangerouslySetInnerHTML={{ __html: post.content }} />
+          <div dangerouslySetInnerHTML={{ __html: post.content }} />
         </article>
       </MainContainer>
     </Layout>
   );
-}
+};
 
-export const getStaticProps: GetStaticProps = async ({
-  params,
-  preview = false,
-  previewData,
-}) => {
-  const data = await getPostAndMorePosts(params?.slug, preview, previewData);
+export default Post;
+
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
+  const data = await getPostBySlug(params?.slug);
+
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {
       post: data.post,
-      posts: data.posts,
     },
     revalidate: 10,
   };
@@ -56,6 +53,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: allPosts.edges.map(({ node }) => `/posts/${node.slug}`) || [],
-    fallback: true,
+    fallback: false,
   };
 };

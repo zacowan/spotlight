@@ -35,7 +35,10 @@ const Navigation: React.FC = () => {
   return (
     <nav className="flex justify-between items-center max-w-prose m-auto">
       <Link href="/">
-        <a className="w-16 active:scale-95 transition-transform">
+        <a
+          aria-label="Home"
+          className="w-16 active:scale-95 transition-transform"
+        >
           <Image
             alt="Memoji face of Zach Cowan"
             className="bg-indigo-300 rounded-full"
