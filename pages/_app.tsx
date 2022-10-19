@@ -36,7 +36,6 @@ function MyApp({ Component, pageProps }: AppProps) {
           name="msapplication-config"
           content="/favicon/browserconfig.xml"
         />
-        <meta name="theme-color" content="#a5b4fc"></meta>
       </Head>
       <Component {...pageProps} />
     </React.Fragment>
