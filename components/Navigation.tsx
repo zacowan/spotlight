@@ -15,18 +15,16 @@ const NavLink: React.FC<NavLinkProps> = ({ label, href }) => {
   const router = useRouter();
 
   return (
-    <li className="relative w-max py-3 px-3 font-medium md:py-0 md:px-0">
-      {router.asPath === href ? (
-        <span className="cursor-default after:absolute after:top-0 after:bottom-0 after:-left-1 after:my-auto after:h-1 after:w-1 after:rounded-full after:bg-indigo-600/60 md:after:left-0 md:after:right-0 md:after:-bottom-1 md:after:top-auto md:after:mx-auto">
-          {label}
-        </span>
-      ) : (
-        <Link href={href}>
-          <a className="hover:text-indigo-600 md:transition-transform md:active:scale-95">
+    <li className="relative w-max py-3 px-3 font-medium hover:text-indigo-600 md:py-0 md:px-0 md:transition-transform md:active:scale-95">
+      <Link href={href}>
+        {router.asPath === href ? (
+          <a className="after:absolute after:top-0 after:bottom-0 after:-left-1 after:my-auto after:h-1 after:w-1 after:rounded-full after:bg-indigo-600/60 md:after:left-0 md:after:right-0 md:after:-bottom-1 md:after:top-auto md:after:mx-auto">
             {label}
           </a>
-        </Link>
-      )}
+        ) : (
+          <a>{label}</a>
+        )}
+      </Link>
     </li>
   );
 };

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { SocialIcon } from "react-social-icons";
+import * as Separator from "@radix-ui/react-separator";
 
 const GITHUB_SOCIAL_LINK = "https://www.github.com/zacowan";
 const LINKEDIN_SOCIAL_LINK = "https://www.linkedin.com/in/zacowan";
@@ -8,7 +9,9 @@ const LINKEDIN_SOCIAL_LINK = "https://www.linkedin.com/in/zacowan";
 const Footer: React.FC = () => {
   return (
     <React.Fragment>
-      <hr className="mt-20" />
+      <Separator.Root className="mt-20">
+        <hr />
+      </Separator.Root>
       <footer className="mx-auto w-full max-w-prose py-20">
         <div className="space-y-4">
           <span className="block px-1 font-semibold">Links</span>
