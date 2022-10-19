@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import * as Dialog from "@radix-ui/react-dialog";
 
 import smileProfile from "../public/resources/smile_profile.png";
 
@@ -47,65 +48,58 @@ const Navigation: React.FC = () => {
         </a>
       </Link>
 
-      <button
-        onClick={() => setMenuOpen(true)}
-        className={`rounded-full border border-slate-200 px-8 py-2 shadow transition-shadow hover:shadow-md md:hidden ${
-          menuOpen ? "hidden" : "visible"
-        }`}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="h-6 w-6"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M3.75 9h16.5m-16.5 6.75h16.5"
-          />
-        </svg>
-      </button>
-
-      <div
-        className={`fixed top-0 left-0 right-0 bottom-0 z-10 flex justify-center backdrop-blur-sm ${
-          menuOpen ? "visible" : "hidden"
-        }`}
-      >
-        <div className="mx-2 mt-10 flex h-max w-full flex-col space-y-8 rounded-3xl border border-slate-200 bg-white p-8 shadow">
-          <div className="flex items-center justify-between">
-            <span className="text-sm">Links</span>
-            <button
-              onClick={() => setMenuOpen(false)}
-              className="flex h-11 w-11 items-center justify-center"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="h-6 w-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-          </div>
-          <ul className="space-y-2">
-            <Links />
-          </ul>
-        </div>
-      </div>
-
       <ul className="hidden flex-wrap space-x-8 rounded-full border border-slate-200 bg-white px-8 py-2 shadow md:flex">
         <Links />
       </ul>
+
+      <Dialog.Root>
+        <Dialog.Trigger className="rounded-full border border-slate-200 px-8 py-2 shadow transition-shadow hover:shadow-md md:hidden">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="h-6 w-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M3.75 9h16.5m-16.5 6.75h16.5"
+            />
+          </svg>
+        </Dialog.Trigger>
+        <Dialog.Portal>
+          <Dialog.Overlay className="absolute top-0 left-0 right-0 bottom-0 flex justify-center backdrop-blur-sm">
+            <Dialog.Content className="mx-2 mt-10 flex h-max w-full flex-col space-y-8 rounded-3xl border border-slate-200 bg-white p-8 shadow">
+              <div className="flex items-center justify-between">
+                <Dialog.Title className="px-3 text-sm">
+                  Navigation Links
+                </Dialog.Title>
+                <Dialog.Close className="flex h-11 w-11 items-center justify-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="h-6 w-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </Dialog.Close>
+              </div>
+              <ul className="space-y-2">
+                <Links />
+              </ul>
+            </Dialog.Content>
+          </Dialog.Overlay>
+        </Dialog.Portal>
+      </Dialog.Root>
     </nav>
   );
 };
