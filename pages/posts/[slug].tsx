@@ -1,6 +1,8 @@
 import React from "react";
 import Head from "next/head";
 import { GetStaticPaths, GetStaticProps } from "next";
+import * as AspectRatio from "@radix-ui/react-aspect-ratio";
+import Image from "next/image";
 
 import { getAllPostsWithSlug, getPostBySlug } from "../../lib/api";
 import Layout from "../../components/Layout";
@@ -22,7 +24,16 @@ const Post: React.FC<Props> = ({ post }) => {
       <Navigation />
       <MainContainer>
         <article className="prose prose-slate w-full pt-20">
-          <h1>{post.title}</h1>
+          {post.featuredImage && (
+            <AspectRatio.Root ratio={16 / 9}>
+              <Image
+                src={post.featuredImage.node.sourceUrl}
+                layout="fill"
+                className="rounded-2xl"
+              />
+            </AspectRatio.Root>
+          )}
+          <h1 className="mt-8">{post.title}</h1>
           <div dangerouslySetInnerHTML={{ __html: post.content }} />
         </article>
       </MainContainer>
