@@ -18,7 +18,12 @@ const Posts: React.FC<Props> = ({ posts }) => {
   return (
     <Layout>
       <Head>
-        <title>zacowan | Spotlight | Posts</title>
+        <title>zacowan | Posts</title>
+        <meta
+          name="description"
+          content="See what Zachary Cowan has been writing about on his posts."
+        />
+        <meta name="keywords" content="software,engineering,blog" />
       </Head>
       <Navigation />
       <MainContainer>
