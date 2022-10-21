@@ -48,9 +48,9 @@ const Post: React.FC<Props> = ({ post }) => {
       </Head>
       <Navigation />
       <MainContainer>
-        <article className="prose prose-slate w-full pt-20">
+        <section className="space-y-8 pt-20">
           {post.featuredImage && (
-            <div className="relative mb-16 h-64 w-full overflow-hidden">
+            <div className="relative h-64 w-full">
               <Image
                 src={post.featuredImage.node.sourceUrl}
                 className="rounded-2xl object-contain"
@@ -60,9 +60,11 @@ const Post: React.FC<Props> = ({ post }) => {
               />
             </div>
           )}
-          <h1 className="mt-8">{post.title}</h1>
-          <div dangerouslySetInnerHTML={{ __html: post.content }} />
-        </article>
+          <article className="prose prose-slate w-full">
+            <h1 className="mt-8">{post.title}</h1>
+            <div dangerouslySetInnerHTML={{ __html: post.content }} />
+          </article>
+        </section>
       </MainContainer>
       <Footer />
     </Layout>
