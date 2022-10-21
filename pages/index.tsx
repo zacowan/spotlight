@@ -10,6 +10,8 @@ import PostCard from "../components/PostCard";
 import MainContainer from "../components/MainContainer";
 import Footer from "../components/Footer";
 
+const RESUME_LINK = "/cowan_zachary_resume.pdf";
+
 type Props = {
   recentPosts: PostBasic[];
 };
@@ -34,7 +36,9 @@ const Home: React.FC<Props> = ({ recentPosts }) => {
             starting in January 2023.
           </p>
           <a
-            href="#"
+            download="zacowan_resume.pdf"
+            type="application/pdf"
+            href={RESUME_LINK}
             className="block w-max rounded-full bg-indigo-600 px-4 py-2 text-sm text-white shadow transition-all hover:bg-indigo-700 active:scale-95"
           >
             Download Resume
