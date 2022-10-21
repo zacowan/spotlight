@@ -2,18 +2,19 @@ import React from "react";
 import { GetStaticProps } from "next";
 import Head from "next/head";
 
-import { getRecentPosts } from "../../lib/api";
+import { getPostsBasic } from "../../lib/api";
 import PostCard from "../../components/PostCard";
 import Layout from "../../components/Layout";
 import Navigation from "../../components/Navigation";
 import MainContainer from "../../components/MainContainer";
-import { RecentPost } from "../../lib/types";
+import Footer from "../../components/Footer";
+import { PostBasic } from "../../lib/types";
 
 type Props = {
-  recentPosts: RecentPost[];
+  posts: PostBasic[];
 };
 
-const Posts: React.FC<Props> = ({ recentPosts }) => {
+const Posts: React.FC<Props> = ({ posts }) => {
   return (
     <Layout>
       <Head>
@@ -21,17 +22,18 @@ const Posts: React.FC<Props> = ({ recentPosts }) => {
       </Head>
       <Navigation />
       <MainContainer>
-        <section className="w-full pt-20 space-y-8">
-          <h1 className="text-4xl font-medium tracking-tight text-center">
+        <section className="w-full space-y-8 pt-20">
+          <h1 className="text-center text-4xl font-medium tracking-tight">
             All Posts
           </h1>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-            {recentPosts.map(({ node: post }) => (
-              <PostCard key={post.slug} {...post} />
+            {posts.map((post) => (
+              <PostCard key={post.node.slug} post={post} />
             ))}
           </div>
         </section>
       </MainContainer>
+      <Footer />
     </Layout>
   );
 };
@@ -39,10 +41,10 @@ const Posts: React.FC<Props> = ({ recentPosts }) => {
 export default Posts;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const recentPosts = await getRecentPosts(1000);
+  const posts = await getPostsBasic(1000);
 
   return {
-    props: { recentPosts },
+    props: { posts },
     revalidate: 10,
   };
 };

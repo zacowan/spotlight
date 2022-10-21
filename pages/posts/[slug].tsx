@@ -1,37 +1,61 @@
-import { useRouter } from "next/router";
-import ErrorPage from "next/error";
+import React from "react";
 import Head from "next/head";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { getAllPostsWithSlug, getPostAndMorePosts } from "../../lib/api";
-import { CMS_NAME } from "../../lib/constants";
+import * as AspectRatio from "@radix-ui/react-aspect-ratio";
+import Image from "next/image";
 
-export default function Post({ post, posts, preview }) {
-  const router = useRouter();
-  const morePosts = posts?.edges;
+import { getAllPostsWithSlug, getPostBySlug } from "../../lib/api";
+import Layout from "../../components/Layout";
+import Navigation from "../../components/Navigation";
+import MainContainer from "../../components/MainContainer";
+import Footer from "../../components/Footer";
+import type { PostNode } from "../../lib/types";
 
-  if (!router.isFallback && !post?.slug) {
-    return <ErrorPage statusCode={404} />;
-  }
+type Props = {
+  post: PostNode;
+};
 
+const Post: React.FC<Props> = ({ post }) => {
   return (
-    <div>
-      <h1>Post</h1>
-    </div>
+    <Layout>
+      <Head>
+        <title>zacowan | Spotlight | Post</title>
+      </Head>
+      <Navigation />
+      <MainContainer>
+        <article className="prose prose-slate w-full pt-20">
+          {post.featuredImage && (
+            <AspectRatio.Root ratio={16 / 9}>
+              <Image
+                src={post.featuredImage.node.sourceUrl}
+                layout="fill"
+                className="rounded-2xl"
+              />
+            </AspectRatio.Root>
+          )}
+          <h1 className="mt-8">{post.title}</h1>
+          <div dangerouslySetInnerHTML={{ __html: post.content }} />
+        </article>
+      </MainContainer>
+      <Footer />
+    </Layout>
   );
-}
+};
 
-export const getStaticProps: GetStaticProps = async ({
-  params,
-  preview = false,
-  previewData,
-}) => {
-  const data = await getPostAndMorePosts(params?.slug, preview, previewData);
+export default Post;
+
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
+  const data = await getPostBySlug(params?.slug);
+
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {
-      preview,
       post: data.post,
-      posts: data.posts,
     },
     revalidate: 10,
   };
@@ -42,6 +66,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: allPosts.edges.map(({ node }) => `/posts/${node.slug}`) || [],
-    fallback: true,
+    fallback: false,
   };
 };
