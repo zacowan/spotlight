@@ -57,6 +57,7 @@ const Post: React.FC<Props> = ({ post }) => {
                 layout="fill"
                 className="rounded-2xl"
                 priority
+                alt=""
               />
             </AspectRatio.Root>
           )}
