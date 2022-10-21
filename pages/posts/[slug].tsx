@@ -27,16 +27,24 @@ const getKeywordsFromPost = (post: PostNode) => {
   return res;
 };
 
+const getDescriptionFromPost = (post: PostNode) => {
+  const excerpt = post.excerpt;
+
+  // Remove the surrounding <p> and </p> tags
+  return excerpt.substring(3, excerpt.length - 5);
+};
+
 const Post: React.FC<Props> = ({ post }) => {
   const title = `zacowan | ${post.title}`;
   const keywords = getKeywordsFromPost(post);
+  const description = getDescriptionFromPost(post);
 
   return (
     <Layout>
       <Head>
         <title>{title}</title>
         <meta name="author" content="Zachary Cowan" />
-        <meta name="description" content={post.excerpt} />
+        <meta name="description" content={description} />
         <meta name="keywords" content={keywords} />
       </Head>
       <Navigation />
@@ -48,6 +56,7 @@ const Post: React.FC<Props> = ({ post }) => {
                 src={post.featuredImage.node.sourceUrl}
                 layout="fill"
                 className="rounded-2xl"
+                priority
               />
             </AspectRatio.Root>
           )}
