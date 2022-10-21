@@ -1,8 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import dayjs from "dayjs";
-import Image from "next/image";
-import * as AspectRatio from "@radix-ui/react-aspect-ratio";
+import Image from "next/future/image";
 
 import { PostBasic } from "../lib/types";
 
@@ -19,13 +18,14 @@ const PostCard: React.FC<Props> = ({
     <Link key={post.slug} href={`/posts/${post.slug}`}>
       <a className="w-full space-y-4 rounded-3xl p-8 transition-all hover:bg-slate-100 md:active:scale-95">
         {showImage && post.featuredImage && (
-          <AspectRatio.Root ratio={16 / 9}>
+          <div className="relative h-32 w-full">
             <Image
               src={post.featuredImage.node.sourceUrl}
-              layout="fill"
-              className="rounded-2xl"
+              className="rounded-2xl object-contain"
+              alt=""
+              fill
             />
-          </AspectRatio.Root>
+          </div>
         )}
         <time className="block text-sm text-slate-600">
           {dayjs(post.date).format("MMM D, YYYY")}
