@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next/future/image";
 import * as Dialog from "@radix-ui/react-dialog";
 
 import smileProfile from "../public/resources/smile_profile.png";
@@ -49,7 +49,7 @@ const Navigation: React.FC = () => {
             className="w-16 transition-transform active:scale-95"
           >
             <Image
-              alt="Memoji face of Zach Cowan"
+              alt="Memoji face of Zachary Cowan"
               className="rounded-full bg-indigo-300"
               src={smileProfile}
             />
@@ -61,7 +61,10 @@ const Navigation: React.FC = () => {
         </ul>
 
         <Dialog.Root>
-          <Dialog.Trigger className="rounded-full border border-slate-200 px-8 py-2 shadow transition-shadow hover:shadow-md md:hidden">
+          <Dialog.Trigger
+            aria-label="Navigation"
+            className="rounded-full border border-slate-200 px-8 py-2 shadow transition-shadow hover:shadow-md md:hidden"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
