@@ -20,7 +20,12 @@ const Home: React.FC<Props> = ({ recentPosts }) => {
   return (
     <Layout>
       <Head>
-        <title>zacowan | Spotlight</title>
+        <title>zacowan</title>
+        <meta
+          name="description"
+          content="Learn more about the work of Zachary Cowan and read his recent posts."
+        />
+        <meta name="keywords" content="zachary,cowan,resume,blog" />
       </Head>
       <Navigation />
       <MainContainer>

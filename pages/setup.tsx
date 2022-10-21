@@ -12,7 +12,12 @@ const Setup: React.FC = () => {
   return (
     <Layout>
       <Head>
-        <title>zacowan | Spotlight | Setup</title>
+        <title>zacowan | Setup</title>
+        <meta
+          name="description"
+          content="Learn about Zachary Cowan's setup and what he reccomends."
+        />
+        <meta name="keywords" content="zachary,cowan,setup" />
       </Head>
       <Navigation />
       <MainContainer>

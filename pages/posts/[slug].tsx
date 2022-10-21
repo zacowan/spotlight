@@ -15,11 +15,29 @@ type Props = {
   post: PostNode;
 };
 
+const getKeywordsFromPost = (post: PostNode) => {
+  const tags = post.tags.edges;
+  let res = "";
+
+  tags.forEach((tag, index) => {
+    res += tag.node.name;
+    if (index < tags.length - 1) res += ",";
+  });
+
+  return res;
+};
+
 const Post: React.FC<Props> = ({ post }) => {
+  const title = `zacowan | ${post.title}`;
+  const keywords = getKeywordsFromPost(post);
+
   return (
     <Layout>
       <Head>
-        <title>zacowan | Spotlight | Post</title>
+        <title>{title}</title>
+        <meta name="author" content="Zachary Cowan" />
+        <meta name="description" content={post.excerpt} />
+        <meta name="keywords" content={keywords} />
       </Head>
       <Navigation />
       <MainContainer>
