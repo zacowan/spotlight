@@ -22,14 +22,21 @@ const Posts: React.FC<Props> = ({ posts }) => {
       </Head>
       <Navigation />
       <MainContainer>
-        <section className="w-full space-y-8 pt-20">
-          <h1 className="text-center text-4xl font-medium tracking-tight">
-            All Posts
+        <section className="w-full max-w-prose space-y-8 pt-20">
+          <h1 className="text-4xl font-medium tracking-tight">
+            My thoughts on software engineering and the projects I work on.
           </h1>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-            {posts.map((post) => (
-              <PostCard key={post.node.slug} post={post} />
-            ))}
+          <p className="text-slate-600">
+            Whether its a project I've worked on, a new paradigm I'm excited
+            about, or just something random I learned, you'll be able to read my
+            thoughts about it here.
+          </p>
+          <div className="border-l border-slate-200">
+            <div className="ml-4 grid grid-cols-1 gap-8 md:grid-cols-2">
+              {posts.map((post) => (
+                <PostCard key={post.node.slug} post={post} />
+              ))}
+            </div>
           </div>
         </section>
       </MainContainer>
