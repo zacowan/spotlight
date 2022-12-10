@@ -76,7 +76,9 @@ export default Post;
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const data = await getPostBySlug(params?.slug);
 
-  if (!data) {
+  if (!data.post) {
+    console.log("Not found.");
+
     return {
       notFound: true,
     };
@@ -95,6 +97,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: allPosts.edges.map(({ node }) => `/posts/${node.slug}`) || [],
-    fallback: false,
+    fallback: "blocking",
   };
 };
