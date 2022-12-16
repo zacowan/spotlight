@@ -53,8 +53,8 @@ const Setup: React.FC = () => {
               blurb="For its speed and extension selection."
             />
             <SetupBlurb
-              label="Hyper"
-              blurb="A beautiful terminal replacement."
+              label="Warp"
+              blurb="A fast, rust-based terminal alternative."
             />
             <SetupBlurb
               label="1Password"
