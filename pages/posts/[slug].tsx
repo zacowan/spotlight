@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/future/image";
+import dayjs from "dayjs";
 
 import { getAllPostsWithSlug, getPostBySlug } from "../../lib/api";
 import Layout from "../../components/Layout";
@@ -15,11 +16,13 @@ type Props = {
 };
 
 const getKeywordsFromPost = (post: PostNode) => {
-  const tags = post.tags.edges;
+  console.log(post);
+
+  const tags = post.tags.nodes;
   let res = "";
 
   tags.forEach((tag, index) => {
-    res += tag.node.name;
+    res += tag.name;
     if (index < tags.length - 1) res += ",";
   });
 
@@ -61,6 +64,22 @@ const Post: React.FC<Props> = ({ post }) => {
             </div>
           )}
           <article className="prose prose-slate w-full">
+            <div className="flex flex-col justify-start gap-4 md:flex-row md:items-center md:justify-between">
+              <time className="block text-sm text-slate-600">
+                {dayjs(post.date).format("MMM D, YYYY")}
+              </time>
+              <div className="flex flex-wrap gap-1">
+                {post.tags &&
+                  post.tags.nodes.map((tag) => (
+                    <span
+                      key={tag.name}
+                      className="rounded-full bg-indigo-100 px-3 py-2 text-xs"
+                    >
+                      {tag.name}
+                    </span>
+                  ))}
+              </div>
+            </div>
             <h1 className="mt-8">{post.title}</h1>
             <div dangerouslySetInnerHTML={{ __html: post.content }} />
           </article>

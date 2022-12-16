@@ -37,7 +37,18 @@ const PostCard: React.FC<Props> = ({
             dangerouslySetInnerHTML={{ __html: post.excerpt }}
           />
         </div>
-        <span className="max-w block text-indigo-600">Read Post</span>
+        <div className="flex flex-wrap gap-1">
+          {post.tags &&
+            post.tags.nodes.map((tag) => (
+              <span
+                key={tag.name}
+                className="rounded-full bg-indigo-100 px-3 py-2 text-xs"
+              >
+                {tag.name}
+              </span>
+            ))}
+        </div>
+        <span className="max-w block pt-4 text-indigo-600">Read Post</span>
       </a>
     </Link>
   );

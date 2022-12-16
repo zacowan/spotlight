@@ -14,10 +14,6 @@ export type CategoryNode = {
   name: string;
 };
 
-export type Tag = {
-  node: TagNode;
-};
-
 export type TagNode = {
   name: string;
 };
@@ -44,7 +40,7 @@ export type PostNode = {
     edges: Category[];
   };
   tags: {
-    edges: Tag[];
+    nodes: TagNode[];
   };
   author: Author;
 };
@@ -54,5 +50,5 @@ export type Post = {
 };
 
 export type PostBasic = {
-  node: Omit<PostNode, "content" | "categories" | "tags">;
+  node: Omit<PostNode, "content" | "categories">;
 };

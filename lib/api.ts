@@ -60,6 +60,11 @@ export async function getPostsBasic(number = 3): Promise<PostBasic[]> {
                 sourceUrl
               }
             }
+            tags {
+              nodes {
+                name
+              }
+            }
             author {
               node {
                 name
@@ -116,10 +121,8 @@ export async function getPostBySlug(slug) {
         }
       }
       tags {
-        edges {
-          node {
-            name
-          }
+        nodes {
+          name
         }
       }
     }
