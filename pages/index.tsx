@@ -34,9 +34,7 @@ const Home: React.FC<Props> = ({ recentPosts }) => {
           <p className="text-slate-600">
             I'm a software engineer with a passion for creating extraordinary
             user experiences. I love to learn and am constantly trying to
-            sharpen and broaden my skill set. I will graduate in December of
-            2022 and am currently looking for full-time software opportunities
-            starting in January 2023.
+            sharpen and broaden my skill set.
           </p>
         </section>
         <section className="w-full max-w-prose space-y-8">
