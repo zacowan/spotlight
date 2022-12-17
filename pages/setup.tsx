@@ -1,5 +1,6 @@
 import React from "react";
 import Head from "next/head";
+import Lottie from "lottie-react";
 
 import SetupBlurb from "../components/SetupBlurb";
 import SetupBlurbSection from "../components/SetupBlurbSection";
@@ -7,6 +8,7 @@ import Layout from "../components/Layout";
 import Navigation from "../components/Navigation";
 import MainContainer from "../components/MainContainer";
 import Footer from "../components/Footer";
+import playfulDeskAnimation from "../lotties/playful_desk.json";
 
 const Setup: React.FC = () => {
   return (
@@ -22,6 +24,13 @@ const Setup: React.FC = () => {
       <Navigation />
       <MainContainer>
         <section className="w-full max-w-prose space-y-8 pt-20">
+          <div className="flex w-full items-center justify-center">
+            <Lottie
+              className="w-80 md:w-96"
+              animationData={playfulDeskAnimation}
+              loop
+            />
+          </div>
           <h1 className="text-4xl font-medium tracking-tight">
             Stuff that makes my life easier. And now, yours.
           </h1>

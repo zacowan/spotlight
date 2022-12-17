@@ -1,6 +1,7 @@
 import React from "react";
 import { GetStaticProps } from "next";
 import Head from "next/head";
+import Lottie from "lottie-react";
 
 import { getPostsBasic } from "../../lib/api";
 import PostCard from "../../components/PostCard";
@@ -9,6 +10,7 @@ import Navigation from "../../components/Navigation";
 import MainContainer from "../../components/MainContainer";
 import Footer from "../../components/Footer";
 import { PostBasic } from "../../lib/types";
+import penWritingAnimation from "../../lotties/pen_writing.json";
 
 type Props = {
   posts: PostBasic[];
@@ -28,6 +30,13 @@ const Posts: React.FC<Props> = ({ posts }) => {
       <Navigation />
       <MainContainer>
         <section className="w-full max-w-prose space-y-8 pt-20">
+          <div className="flex w-full items-center justify-center">
+            <Lottie
+              className="w-52 md:w-64"
+              animationData={penWritingAnimation}
+              loop
+            />
+          </div>
           <h1 className="text-4xl font-medium tracking-tight">
             My thoughts on software engineering and the projects I work on.
           </h1>

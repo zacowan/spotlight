@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { GetStaticProps } from "next";
 import React from "react";
+import Lottie from "lottie-react";
 
 import { getPostsBasic } from "../lib/api";
 import { PostBasic } from "../lib/types";
@@ -9,6 +10,7 @@ import Navigation from "../components/Navigation";
 import PostCard from "../components/PostCard";
 import MainContainer from "../components/MainContainer";
 import Footer from "../components/Footer";
+import floatingComputerCoffeeAnimation from "../lotties/floating_computer_coffee.json";
 
 type Props = {
   recentPosts: PostBasic[];
@@ -28,6 +30,13 @@ const Home: React.FC<Props> = ({ recentPosts }) => {
       <Navigation />
       <MainContainer>
         <section className="w-full max-w-prose space-y-8 pt-20">
+          <div className="flex w-full items-center justify-center">
+            <Lottie
+              className="w-80 md:w-96"
+              animationData={floatingComputerCoffeeAnimation}
+              loop
+            />
+          </div>
           <h1 className="text-4xl font-medium tracking-tight">
             Software Engineer & UX Enthusiast
           </h1>
