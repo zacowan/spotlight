@@ -42,7 +42,7 @@ const Home: React.FC<Props> = ({ recentPosts }) => {
           <div className="border-l border-slate-200">
             <div className="ml-4 flex flex-wrap gap-8">
               {recentPosts.map((post) => (
-                <PostCard key={post.node.slug} post={post} showImage={false} />
+                <PostCard key={post.node.id} post={post} showImage={false} />
               ))}
             </div>
           </div>

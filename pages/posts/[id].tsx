@@ -4,7 +4,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/future/image";
 import dayjs from "dayjs";
 
-import { getAllPostsWithSlug, getPostBySlug } from "../../lib/api";
+import { getAllPostsId, getPostById } from "../../lib/api";
 import Layout from "../../components/Layout";
 import Navigation from "../../components/Navigation";
 import MainContainer from "../../components/MainContainer";
@@ -17,8 +17,6 @@ type Props = {
 };
 
 const getKeywordsFromPost = (post: PostNode) => {
-  console.log(post);
-
   const tags = post.tags.nodes;
   let res = "";
 
@@ -84,11 +82,9 @@ const Post: React.FC<Props> = ({ post }) => {
 export default Post;
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
-  const data = await getPostBySlug(params?.slug);
+  const data = await getPostById(params?.id as string);
 
   if (!data.post) {
-    console.log("Not found.");
-
     return {
       notFound: true,
     };
@@ -103,10 +99,10 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const allPosts = await getAllPostsWithSlug();
+  const allPosts = await getAllPostsId();
 
   return {
-    paths: allPosts.edges.map(({ node }) => `/posts/${node.slug}`) || [],
+    paths: allPosts.map(({ node }) => `/posts/${node.id}`) || [],
     fallback: "blocking",
   };
 };

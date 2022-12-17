@@ -39,7 +39,7 @@ const Posts: React.FC<Props> = ({ posts }) => {
           <div className="border-l border-slate-200">
             <div className="ml-4 grid grid-cols-1 gap-8 md:grid-cols-2">
               {posts.map((post) => (
-                <PostCard key={post.node.slug} post={post} />
+                <PostCard key={post.node.id} post={post} />
               ))}
             </div>
           </div>

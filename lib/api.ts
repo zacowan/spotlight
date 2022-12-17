@@ -1,4 +1,4 @@
-import type { PostBasic } from "./types";
+import type { PostBasic, PostOnlyId } from "./types";
 
 const API_URL = process.env.WORDPRESS_API_URL;
 
@@ -29,52 +29,52 @@ async function fetchAPI(query = "", { variables }: Record<string, any> = {}) {
   return json.data;
 }
 
-export async function getAllPostsWithSlug() {
+const POST_FIELDS_FRAGMENT = `
+fragment PostFields on Post {
+  title
+  excerpt
+  id
+  date
+  featuredImage {
+    node {
+      sourceUrl
+    }
+  }
+  tags {
+    nodes {
+      name
+    }
+  }
+}
+`;
+
+export async function getAllPostsId(): Promise<PostOnlyId[]> {
   const data = await fetchAPI(`
     {
       posts(first: 10000) {
         edges {
           node {
-            slug
+            id
           }
         }
       }
     }
   `);
-  return data?.posts;
+
+  if (!data) return [];
+
+  return data?.posts.edges;
 }
 
 export async function getPostsBasic(number = 3): Promise<PostBasic[]> {
   const data = await fetchAPI(
     `
+    ${POST_FIELDS_FRAGMENT}
     query AllPosts {
       posts(first: ${number}, where: { orderby: { field: DATE, order: DESC } }) {
         edges {
           node {
-            title
-            excerpt
-            slug
-            date
-            featuredImage {
-              node {
-                sourceUrl
-              }
-            }
-            tags {
-              nodes {
-                name
-              }
-            }
-            author {
-              node {
-                name
-                firstName
-                lastName
-                avatar {
-                  url
-                }
-              }
-            }
+            ...PostFields
           }
         }
       }
@@ -87,47 +87,12 @@ export async function getPostsBasic(number = 3): Promise<PostBasic[]> {
   return data?.posts.edges;
 }
 
-export async function getPostBySlug(slug) {
+export async function getPostById(id: string) {
   const data = await fetchAPI(
     `
-    fragment AuthorFields on User {
-      name
-      firstName
-      lastName
-      avatar {
-        url
-      }
-    }
-    fragment PostFields on Post {
-      title
-      excerpt
-      slug
-      date
-      featuredImage {
-        node {
-          sourceUrl
-        }
-      }
-      author {
-        node {
-          ...AuthorFields
-        }
-      }
-      categories {
-        edges {
-          node {
-            name
-          }
-        }
-      }
-      tags {
-        nodes {
-          name
-        }
-      }
-    }
-    query PostBySlug($id: ID!, $idType: PostIdType!) {
-      post(id: $id, idType: $idType) {
+    ${POST_FIELDS_FRAGMENT}
+    query PostById($id: ID!) {
+      post(id: $id, idType: ID) {
         ...PostFields
         content
       }
@@ -135,8 +100,7 @@ export async function getPostBySlug(slug) {
   `,
     {
       variables: {
-        id: slug,
-        idType: "SLUG",
+        id: id,
       },
     }
   );

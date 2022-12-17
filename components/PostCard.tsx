@@ -16,7 +16,7 @@ const PostCard: React.FC<Props> = ({
   showImage = true,
 }) => {
   return (
-    <Link key={post.slug} href={`/posts/${post.slug}`}>
+    <Link key={post.id} href={`/posts/${post.id}`}>
       <a className="flex w-full flex-col justify-between rounded-3xl p-8 transition-all hover:bg-slate-100 md:active:scale-95">
         <div className="space-y-4">
           {showImage && post.featuredImage && (
