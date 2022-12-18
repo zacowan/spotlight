@@ -48,7 +48,7 @@ const Home: React.FC<Props> = ({ recentPosts }) => {
         </section>
         <section className="w-full max-w-prose space-y-8">
           <h1 className="text-xl font-medium tracking-tight">Recent Posts</h1>
-          <div className="border-l border-slate-200 dark:border-slate-600">
+          <div className="border-l border-slate-200 dark:border-slate-800">
             <div className="ml-4 flex flex-wrap gap-8">
               {recentPosts.map((post) => (
                 <PostCard key={post.node.id} post={post} showImage={false} />

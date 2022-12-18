@@ -45,7 +45,7 @@ const Posts: React.FC<Props> = ({ posts }) => {
             about, or just something random I learned, you'll be able to read my
             thoughts about it here.
           </p>
-          <div className="border-l border-slate-200 dark:border-slate-600">
+          <div className="border-l border-slate-200 dark:border-slate-800">
             <div className="ml-4 grid grid-cols-1 gap-8 md:grid-cols-2">
               {posts.map((post) => (
                 <PostCard key={post.node.id} post={post} />

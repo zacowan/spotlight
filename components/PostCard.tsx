@@ -41,7 +41,7 @@ const PostCard: React.FC<Props> = ({
           </div>
           <Tags tags={post.tags} />
         </div>
-        <span className="max-w block pt-4 text-indigo-600 dark:text-indigo-400">
+        <span className="max-w block pt-4 text-indigo-600 dark:text-indigo-500">
           Read Post
         </span>
       </a>
