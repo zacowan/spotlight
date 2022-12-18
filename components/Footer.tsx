@@ -5,6 +5,7 @@ import * as Separator from "@radix-ui/react-separator";
 
 const GITHUB_SOCIAL_LINK = "https://www.github.com/zacowan";
 const LINKEDIN_SOCIAL_LINK = "https://www.linkedin.com/in/zacowan";
+const TWITTER_SOCIAL_LINK = "https://twitter.com/zacowan_";
 
 const Footer: React.FC = () => {
   return (
@@ -38,13 +39,19 @@ const Footer: React.FC = () => {
               className="text-slate-600 hover:text-indigo-600"
               bgColor="transparent"
               fgColor="currentColor"
+              url={LINKEDIN_SOCIAL_LINK}
+            />
+            <SocialIcon
+              className="text-slate-600 hover:text-indigo-600"
+              bgColor="transparent"
+              fgColor="currentColor"
               url={GITHUB_SOCIAL_LINK}
             />
             <SocialIcon
               className="text-slate-600 hover:text-indigo-600"
               bgColor="transparent"
               fgColor="currentColor"
-              url={LINKEDIN_SOCIAL_LINK}
+              url={TWITTER_SOCIAL_LINK}
             />
           </div>
         </div>
