@@ -11,7 +11,7 @@ const SetupBlurbSection: React.FC<PropsWithChildren<Props>> = ({
   return (
     <React.Fragment>
       <h2 className="text-lg font-medium tracking-tight">{title}</h2>
-      <div className="border-l border-slate-200">
+      <div className="border-l border-slate-200 dark:border-slate-600">
         <div className="ml-4 flex flex-col space-y-6">{children}</div>
       </div>
     </React.Fragment>

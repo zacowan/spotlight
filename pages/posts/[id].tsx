@@ -62,9 +62,9 @@ const Post: React.FC<Props> = ({ post }) => {
               />
             </div>
           )}
-          <article className="prose prose-slate w-full">
+          <article className="prose prose-slate w-full dark:prose-invert">
             <div className="flex flex-col justify-start gap-4 md:flex-row md:items-center md:justify-between">
-              <time className="block text-sm text-slate-600">
+              <time className="block text-sm text-slate-600 dark:text-slate-300">
                 {dayjs(post.date).format("MMM D, YYYY")}
               </time>
               <Tags tags={post.tags} />

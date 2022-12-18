@@ -8,7 +8,7 @@ import Layout from "../components/Layout";
 import Navigation from "../components/Navigation";
 import MainContainer from "../components/MainContainer";
 import Footer from "../components/Footer";
-import playfulDeskAnimation from "../lotties/playful_desk.json";
+import toolsFloatingAnimation from "../lotties/tools_floating.json";
 
 const Setup: React.FC = () => {
   return (
@@ -17,7 +17,7 @@ const Setup: React.FC = () => {
         <title>zacowan | Setup</title>
         <meta
           name="description"
-          content="Learn about Zachary Cowan's setup and what he reccomends."
+          content="Learn about Zachary Cowan's setup and what he recommends."
         />
         <meta name="keywords" content="zachary,cowan,setup" />
       </Head>
@@ -26,15 +26,15 @@ const Setup: React.FC = () => {
         <section className="w-full max-w-prose space-y-8 pt-20">
           <div className="flex w-full items-center justify-center">
             <Lottie
-              className="w-80 md:w-96"
-              animationData={playfulDeskAnimation}
+              className="w-64 md:w-80"
+              animationData={toolsFloatingAnimation}
               loop
             />
           </div>
           <h1 className="text-4xl font-medium tracking-tight">
             Stuff that makes my life easier. And now, yours.
           </h1>
-          <p className="text-slate-600">
+          <p className="text-slate-600 dark:text-slate-300">
             I'm a big fan of simple, minimalist designs, and that love trickles
             its way into my life as an engineer. While everyone is going to have
             their own preferences, I'd like to give a list of what I use in my

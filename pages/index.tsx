@@ -40,7 +40,7 @@ const Home: React.FC<Props> = ({ recentPosts }) => {
           <h1 className="text-4xl font-medium tracking-tight">
             Software Engineer & UX Enthusiast
           </h1>
-          <p className="text-slate-600">
+          <p className="text-slate-600 dark:text-slate-300">
             I'm a software engineer with a passion for creating extraordinary
             user experiences. I love to learn and am constantly trying to
             sharpen and broaden my skill set.
@@ -48,7 +48,7 @@ const Home: React.FC<Props> = ({ recentPosts }) => {
         </section>
         <section className="w-full max-w-prose space-y-8">
           <h1 className="text-xl font-medium tracking-tight">Recent Posts</h1>
-          <div className="border-l border-slate-200">
+          <div className="border-l border-slate-200 dark:border-slate-600">
             <div className="ml-4 flex flex-wrap gap-8">
               {recentPosts.map((post) => (
                 <PostCard key={post.node.id} post={post} showImage={false} />

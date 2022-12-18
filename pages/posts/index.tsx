@@ -40,12 +40,12 @@ const Posts: React.FC<Props> = ({ posts }) => {
           <h1 className="text-4xl font-medium tracking-tight">
             My thoughts on software engineering and the projects I work on.
           </h1>
-          <p className="text-slate-600">
+          <p className="text-slate-600 dark:text-slate-300">
             Whether its a project I've worked on, a new paradigm I'm excited
             about, or just something random I learned, you'll be able to read my
             thoughts about it here.
           </p>
-          <div className="border-l border-slate-200">
+          <div className="border-l border-slate-200 dark:border-slate-600">
             <div className="ml-4 grid grid-cols-1 gap-8 md:grid-cols-2">
               {posts.map((post) => (
                 <PostCard key={post.node.id} post={post} />

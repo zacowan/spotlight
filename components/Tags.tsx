@@ -13,7 +13,7 @@ const Tags: React.FC<Props> = ({ tags }) => {
       {tags.nodes.map((tag) => (
         <span
           key={tag.name}
-          className="rounded-full bg-indigo-100 px-3 py-2 text-xs text-slate-600"
+          className="rounded-full bg-indigo-100 px-3 py-2 text-xs text-slate-600 dark:bg-indigo-400/20 dark:text-slate-300"
         >
           {tag.name}
         </span>
