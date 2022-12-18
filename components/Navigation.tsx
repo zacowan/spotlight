@@ -18,7 +18,7 @@ const NavLink: React.FC<NavLinkProps> = ({ label, href }) => {
     <li className="relative w-max py-3 px-3 font-medium hover:text-indigo-600 hover:dark:text-indigo-500 md:py-0 md:px-0 md:transition-transform md:active:scale-95">
       <Link href={href}>
         {router.asPath === href ? (
-          <a className="after:absolute after:top-0 after:bottom-0 after:-left-1 after:my-auto after:h-1 after:w-1 after:rounded-full after:bg-indigo-400/40 after:dark:bg-indigo-600/80 md:after:left-0 md:after:right-0 md:after:-bottom-1 md:after:top-auto md:after:mx-auto">
+          <a className="after:absolute after:top-0 after:bottom-0 after:-left-1 after:my-auto after:h-1 after:w-1 after:rounded-full after:bg-indigo-600/60 after:dark:bg-indigo-500/60 md:after:left-0 md:after:right-0 md:after:-bottom-1 md:after:top-auto md:after:mx-auto">
             {label}
           </a>
         ) : (
@@ -56,14 +56,14 @@ const Navigation: React.FC = () => {
           </a>
         </Link>
 
-        <ul className="hidden flex-wrap space-x-8 rounded-full border border-slate-200 bg-white px-8 py-2 shadow dark:border-slate-800 dark:bg-slate-900 dark:brightness-125 md:flex">
+        <ul className="hidden flex-wrap space-x-8 rounded-full border border-slate-200 bg-white px-8 py-2 shadow dark:border-slate-800 dark:bg-slate-900 dark:shadow-slate-950 dark:brightness-125 md:flex">
           <Links />
         </ul>
 
         <Dialog.Root>
           <Dialog.Trigger
             aria-label="Navigation"
-            className="rounded-full border border-slate-200 px-8 py-2 shadow transition-shadow hover:shadow-md dark:border-slate-800 dark:bg-slate-900 dark:brightness-125 md:hidden"
+            className="rounded-full border border-slate-200 px-8 py-2 shadow transition-shadow hover:shadow-md dark:border-slate-800 dark:bg-slate-900 dark:shadow-slate-950 dark:brightness-125 md:hidden"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -82,7 +82,7 @@ const Navigation: React.FC = () => {
           </Dialog.Trigger>
           <Dialog.Portal>
             <Dialog.Overlay className="absolute top-0 left-0 right-0 bottom-0 flex justify-center backdrop-blur-sm">
-              <Dialog.Content className="mx-2 mt-10 flex h-max w-full flex-col space-y-8 rounded-3xl border border-slate-200 bg-white p-8 shadow dark:border-slate-800 dark:bg-slate-900 dark:text-white dark:brightness-125">
+              <Dialog.Content className="mx-2 mt-10 flex h-max w-full flex-col space-y-8 rounded-3xl border border-slate-200 bg-white p-8 shadow dark:border-slate-800 dark:bg-slate-900 dark:text-white dark:shadow-slate-950 dark:brightness-125">
                 <div className="flex items-center justify-between">
                   <Dialog.Title className="px-3 text-sm">
                     Navigation Links
