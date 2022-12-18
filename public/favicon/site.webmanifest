@@ -13,8 +13,6 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#a5b4fc",
   "start_url": "https://www.zacowan.com",
   "display": "standalone"
 }
