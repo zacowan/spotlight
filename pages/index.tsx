@@ -27,9 +27,15 @@ const Home: React.FC<Props> = ({ recentPosts }) => {
         />
         <meta name="keywords" content="zachary,cowan,resume,blog" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="/resources/social_image.png" />
+        <meta
+          property="og:image"
+          content="https://www.zacowan.com/resources/social_card.png"
+        />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="/resources/social_image.png" />
+        <meta
+          name="twitter:image"
+          content="https://www.zacowan.com/resources/social_card.png"
+        />
       </Head>
       <Navigation />
       <MainContainer>
