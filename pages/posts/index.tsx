@@ -21,11 +21,18 @@ const Posts: React.FC<Props> = ({ posts }) => {
     <Layout>
       <Head>
         <title>zacowan | Posts</title>
-        <meta
-          name="description"
-          content="See what Zachary Cowan has been writing about on his posts."
-        />
+        <meta name="description" content="Read Zachary Cowan's posts." />
         <meta name="keywords" content="software,engineering,blog" />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://www.zacowan.com/resources/social_card.png"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:image"
+          content="https://www.zacowan.com/resources/social_card.png"
+        />
       </Head>
       <Navigation />
       <MainContainer>

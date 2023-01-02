@@ -15,11 +15,18 @@ const Setup: React.FC = () => {
     <Layout>
       <Head>
         <title>zacowan | Setup</title>
-        <meta
-          name="description"
-          content="Learn about Zachary Cowan's setup and what he recommends."
-        />
+        <meta name="description" content="Learn about Zachary Cowan's setup." />
         <meta name="keywords" content="zachary,cowan,setup" />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://www.zacowan.com/resources/social_card.png"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:image"
+          content="https://www.zacowan.com/resources/social_card.png"
+        />
       </Head>
       <Navigation />
       <MainContainer>

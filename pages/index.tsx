@@ -23,7 +23,7 @@ const Home: React.FC<Props> = ({ recentPosts }) => {
         <title>zacowan</title>
         <meta
           name="description"
-          content="Learn more about the work of Zachary Cowan and read his recent posts."
+          content="Learn more about the work of Zachary Cowan."
         />
         <meta name="keywords" content="zachary,cowan,resume,blog" />
         <meta property="og:type" content="website" />
