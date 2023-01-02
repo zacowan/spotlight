@@ -26,6 +26,10 @@ const Home: React.FC<Props> = ({ recentPosts }) => {
           content="Learn more about the work of Zachary Cowan and read his recent posts."
         />
         <meta name="keywords" content="zachary,cowan,resume,blog" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="/resources/social_image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="/resources/social_image.png" />
       </Head>
       <Navigation />
       <MainContainer>
