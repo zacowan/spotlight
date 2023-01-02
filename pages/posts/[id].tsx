@@ -47,6 +47,13 @@ const Post: React.FC<Props> = ({ post }) => {
         <meta name="author" content="Zachary Cowan" />
         <meta name="description" content={description} />
         <meta name="keywords" content={keywords} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={post.featuredImage.node.sourceUrl} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:image"
+          content={post.featuredImage.node.sourceUrl}
+        />
       </Head>
       <Navigation />
       <MainContainer>
